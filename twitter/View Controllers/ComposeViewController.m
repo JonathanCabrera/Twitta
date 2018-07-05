@@ -12,7 +12,7 @@
 
 
 
-@interface ComposeViewController ()
+@interface ComposeViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *composeTextView;
 
 @end
@@ -21,8 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.composeTextView.delegate = self;
     // Do any additional setup after loading the view.
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,8 +36,18 @@
 }
 
 - (IBAction)tweetBtnTapped:(id)sender {
-    NSLog(@"%@", _composeTextView.text);
-
+    
+    [[APIManager shared]postStatusWithText:self.composeTextView.text completion:^(Tweet *tweet, NSError *error) {
+        [self dismissViewControllerAnimated:true completion:nil];
+        if(error){
+            NSLog(@"Error composing Tweet: %@", error.localizedDescription);
+        }
+        else{
+            [self.delegate didTweet:tweet];
+            NSLog(@"Compose Tweet Success!");
+        }
+    }];
+    
 }
 
 

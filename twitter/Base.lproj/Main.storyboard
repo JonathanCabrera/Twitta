@@ -109,28 +109,45 @@
                                             <rect key="frame" x="200" y="83" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="favor-icon"/>
+                                            <connections>
+                                                <action selector="didTapFavorite:" destination="rXi-xg-Sjr" eventType="touchUpInside" id="hLW-Ar-VRB"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUQ-5v-fUx">
                                             <rect key="frame" x="277" y="83" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" image="message-icon"/>
+                                            <connections>
+                                                <action selector="didTapDirectMessage:" destination="rXi-xg-Sjr" eventType="touchUpInside" id="y72-VN-qRM"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j23-Oa-KAa">
                                             <rect key="frame" x="51" y="83" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="reply-icon"/>
+                                            <connections>
+                                                <action selector="didTapReply:" destination="rXi-xg-Sjr" eventType="touchUpInside" id="EZV-5B-SSW"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wha-W6-fwM">
                                             <rect key="frame" x="127" y="83" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <state key="normal" image="retweet-icon"/>
+                                            <connections>
+                                                <action selector="didTapRetweet:" destination="rXi-xg-Sjr" eventType="touchUpInside" id="TJd-w4-8UC"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="dateLabel" destination="HqS-cG-EtV" id="2uu-xa-CpB"/>
+                                    <outlet property="directMessageBtn" destination="GUQ-5v-fUx" id="hDA-Fo-952"/>
+                                    <outlet property="favoriteBtn" destination="Oru-e5-qb7" id="9K0-Ns-pKP"/>
                                     <outlet property="profileImage" destination="sOl-XQ-wLU" id="Ojz-qh-GkR"/>
+                                    <outlet property="replyBtn" destination="j23-Oa-KAa" id="72S-Wn-pCF"/>
+                                    <outlet property="retweetBtn" destination="Wha-W6-fwM" id="xKg-CC-vJh"/>
                                     <outlet property="screenNameLabel" destination="bCf-Hn-zTl" id="EeN-Jh-8Uv"/>
                                     <outlet property="tweetLabel" destination="6aU-bd-ff1" id="rfe-fG-BhH"/>
                                     <outlet property="userNameLabel" destination="jJY-D2-NJ1" id="0SG-Dq-hGc"/>
@@ -180,11 +197,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EPA-VE-qki">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="This is a test tweet" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EPA-VE-qki">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -200,8 +216,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Tweet" id="1f6-Sd-2y0">
                             <connections>
-                                <action selector="tweetBtnTapped:" destination="4Lw-U7-BWy" id="oPr-Uc-yHP"/>
-                                <segue destination="FTQ-G1-N2b" kind="presentation" id="xyO-Rj-C7B"/>
+                                <action selector="tweetBtnTapped:" destination="4Lw-U7-BWy" id="GnS-fl-UFj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -241,7 +256,4 @@
         <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="xyO-Rj-C7B"/>
-    </inferredMetricsTieBreakers>
 </document>

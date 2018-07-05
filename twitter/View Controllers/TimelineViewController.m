@@ -7,16 +7,18 @@
 //
 
 #import "TimelineViewController.h"
+#import "ComposeViewController.h"
 #import "APIManager.h"
 #import "TweetCell.h"
 #import "Tweet.h"
 #import "UIImageView+AFNetworking.h"
 #import <UIRefreshControl+AFNetworking.h>
 
-@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+
 
 @property(weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *tweets;
+@property (strong, nonatomic) NSMutableArray *tweets;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 
 @end
@@ -39,7 +41,7 @@
     [self.tableView insertSubview:refreshControl atIndex:0];
 
     
-    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweetsDict, NSError *error) {
+    [[APIManager shared] getHomeTimelineWithCompletion:^(NSMutableArray *tweetsDict, NSError *error) {
         if (tweetsDict) {
             
             self.tweets = tweetsDict;
@@ -59,18 +61,15 @@
     [super didReceiveMemoryWarning];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     UINavigationController *navigationController = [segue destinationViewController];
+     ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+     composeController.delegate = self;
+ }
 
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
-    [[APIManager shared] getHomeTimelineWithCompletion:^(NSArray *tweetsDict, NSError *error) {
+    [[APIManager shared] getHomeTimelineWithCompletion:^(NSMutableArray *tweetsDict, NSError *error) {
         if (tweetsDict) {
             
             self.tweets = tweetsDict;
@@ -90,7 +89,6 @@
     
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     Tweet *tweet = self.tweets[indexPath.row];
-    NSLog(@"%@", tweet.text);
     User  *user = tweet.user;
     cell.screenNameLabel.text = user.screenName;
     cell.userNameLabel.text = user.name;
@@ -102,9 +100,15 @@
     return cell;
 }
 
+
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 20;
 }
 
+
+- (void)didTweet:(Tweet *)tweet {
+    [self.tweets addObject:tweet];
+    [self.tableView reloadData];
+}
 
 @end

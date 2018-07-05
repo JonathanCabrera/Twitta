@@ -13,12 +13,15 @@
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+
 @property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-// Change to TTTAttributeLabel later yo!!!!!
 @property (weak, nonatomic) IBOutlet UILabel *tweetLabel;
 
-
+@property (weak, nonatomic) IBOutlet UIButton *replyBtn;
+@property (weak, nonatomic) IBOutlet UIButton *retweetBtn;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteBtn;
+@property (weak, nonatomic) IBOutlet UIButton *directMessageBtn;
 
 @end
