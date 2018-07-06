@@ -32,6 +32,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     //initialize refreshControl
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
