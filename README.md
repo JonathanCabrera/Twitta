@@ -8,16 +8,16 @@ Time spent: **X** hours spent in total
 
 The following **required** functionality is completed:
 
-- [ ] User sees app icon in home screen and styled launch screen
-- [ ] User can sign in using OAuth login flow
-- [ ] User can Logout
-- [ ] User can view last 20 tweets from their home timeline
-- [ ] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.
-- [ ] User can pull to refresh.
-- [ ] User can tap the retweet and favorite buttons in a tweet cell to retweet and/or favorite a tweet.
-- [ ] User can compose a new tweet by tapping on a compose button.
-- [ ] Using AutoLayout, the Tweet cell should adjust it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation.
-- [ ] The current signed in user will be persisted across restarts
+- [x] User sees app icon in home screen and styled launch screen
+- [x] User can sign in using OAuth login flow
+- [x] User can Logout
+- [x] User can view last 20 tweets from their home timeline
+- [x] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.
+- [x] User can pull to refresh.
+- [x] User can tap the retweet and favorite buttons in a tweet cell to retweet and/or favorite a tweet.
+- [x] User can compose a new tweet by tapping on a compose button.
+- [x] Using AutoLayout, the Tweet cell should adjust it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation.
+- [x] The current signed in user will be persisted across restarts
 
 The following **optional** features are implemented:
 
@@ -27,7 +27,7 @@ The following **optional** features are implemented:
 - Contains a section with the users basic stats: # tweets, # following, # followers
 - [ ] Profile view should include that user's timeline
 - [ ] User should display the relative timestamp for each tweet "8m", "7h"
-- [ ] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. Refer to [[this guide|unretweeting]] for help on implementing unretweeting.
+- [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. Refer to [[this guide|unretweeting]] for help on implementing unretweeting.
 - [ ] Links in tweets are clickable.
 - [ ] User can tap the profile image in any tweet to see another user's profile
 - Contains the user header view: picture and tagline
@@ -47,8 +47,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1.  how to implement user profiles
+2. What is a better way to handle actions simlilar to retweet/unretweet/favorite/unfavorite becuase they were pretty much the same but different endpoints
 
 ## Video Walkthrough
 
@@ -62,6 +62,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Describe any challenges encountered while building the app.
 
+one of the challenge I faced in the duration of building this app was that a sense of imposter syndrome. There's a sense of pressure and confidence reduction when other interns are going home and spending the rest of their nights working on building the app. A part of me thinks go them, they are so hard working! Another part of me thinks that I want to emulate a work enviornment that I'd like to work and pretty much only work at work. The feeling of being behind because others at your pod spend time at home can affect some people. From experience I can tell you that it did affect me until I realized that I shouldn't judge the quality of work based on those around me. 
+
+
 ## Credits
 
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
@@ -70,7 +73,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright 2018 Jonathan Cabrera
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
