@@ -49,30 +49,14 @@
     } else {
         [[APIManager shared] unretweet:self.tweet completion:^(Tweet *tweet, NSError *error) {
             [sender setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
-            //        [sender setSelected:NO];
-            //        self.tweet.retweeted = NO;
-            //        self.tweet.retweetCount -= 1;
-            //        [self.retweetBtn setTitle:[NSString stringWithFormat:@"%d", self.tweet.retweetCount] forState:UIControlStateNormal];
+            [sender setSelected:NO];
+            self.tweet.retweeted = NO;
+            self.tweet.retweetCount -= 1;
+            [self.retweetBtn setTitle:[NSString stringWithFormat:@"%d", self.tweet.retweetCount] forState:UIControlStateNormal];
         }];
 
     }
 
-//
-//    if ([sender isSelected]) {
-//        [sender setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
-//        [sender setSelected:NO];
-//        self.tweet.retweeted = NO;
-//        self.tweet.retweetCount -= 1;
-//        [self.retweetBtn setTitle:[NSString stringWithFormat:@"%d", self.tweet.retweetCount] forState:UIControlStateNormal];
-//
-//    } else {
-//        [sender setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateSelected];
-//        [sender setSelected:YES];
-//        self.tweet.retweeted = YES;
-//        self.tweet.retweetCount += 1;
-//        [self.retweetBtn setTitle:[NSString stringWithFormat:@"%d", self.tweet.retweetCount] forState:UIControlStateNormal];
-//
-//    }
 }
 
 - (IBAction)didTapFavorite:(id)sender {
@@ -95,8 +79,6 @@
         }];
     }
 }
-
-
 
 //- (IBAction)didTapDirectMessage:(id)sender {
 //
