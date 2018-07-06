@@ -8,10 +8,12 @@
 
 #import "TimelineViewController.h"
 #import "ComposeViewController.h"
+#import "LoginViewController.h"
 #import "APIManager.h"
 #import "TweetCell.h"
 #import "Tweet.h"
 #import "UIImageView+AFNetworking.h"
+#import "AppDelegate.h"
 #import <UIRefreshControl+AFNetworking.h>
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
@@ -68,6 +70,7 @@
      composeController.delegate = self;
  }
 
+
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
     [[APIManager shared] getHomeTimelineWithCompletion:^(NSMutableArray *tweetsDict, NSError *error) {
         if (tweetsDict) {
@@ -88,12 +91,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
-    Tweet *tweet = self.tweets[indexPath.row];
-    User  *user = tweet.user;
+    
+    cell.tweet = self.tweets[indexPath.row];
+    
+    User  *user = cell.tweet.user;
     cell.screenNameLabel.text = user.screenName;
     cell.userNameLabel.text = user.name;
-    cell.tweetLabel.text = tweet.text;
+    cell.tweetLabel.text = cell.tweet.text;
     
+    [cell.favoriteBtn  setTitle:[NSString stringWithFormat:@"%d", cell.tweet.favoriteCount] forState:UIControlStateNormal];
+    [cell.retweetBtn  setTitle:[NSString stringWithFormat:@"%d", cell.tweet.retweetCount] forState:UIControlStateNormal];
+    if (cell.tweet.favorited) {
+        [cell.favoriteBtn setImage:[UIImage imageNamed:@"favor-icon-red"] forState:UIControlStateNormal];
+    } else {
+        [cell.favoriteBtn setImage:[UIImage imageNamed:@"favor-icon"] forState:UIControlStateNormal];
+
+    }
+    if (cell.tweet.retweeted) {
+        [cell.retweetBtn setImage:[UIImage imageNamed:@"retweet-icon-green"] forState:UIControlStateNormal];
+    } else {
+        [cell.retweetBtn setImage:[UIImage imageNamed:@"retweet-icon"] forState:UIControlStateNormal];
+
+    }
+
     NSURL *profilePhotoURL = [NSURL URLWithString:user.profilePhoto];
     [cell.profileImage setImageWithURL:profilePhotoURL];
     
@@ -109,6 +129,14 @@
 - (void)didTweet:(Tweet *)tweet {
     [self.tweets addObject:tweet];
     [self.tableView reloadData];
+}
+
+- (IBAction)didTapLogout:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    appDelegate.window.rootViewController = loginViewController;
 }
 
 @end

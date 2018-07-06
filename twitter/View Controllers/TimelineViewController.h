@@ -10,5 +10,6 @@
 #import <TTTAttributedLabel.h>
 
 @interface TimelineViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *logoutBtn;
 
 @end

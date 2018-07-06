@@ -105,14 +105,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oru-e5-qb7">
-                                            <rect key="frame" x="200" y="83" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="favor-icon"/>
-                                            <connections>
-                                                <action selector="didTapFavorite:" destination="rXi-xg-Sjr" eventType="touchUpInside" id="hLW-Ar-VRB"/>
-                                            </connections>
-                                        </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUQ-5v-fUx">
                                             <rect key="frame" x="277" y="83" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -131,12 +123,25 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wha-W6-fwM">
-                                            <rect key="frame" x="127" y="83" width="30" height="30"/>
+                                            <rect key="frame" x="109" y="83" width="75" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                            <state key="normal" image="retweet-icon"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <state key="normal" title="0" image="retweet-icon">
+                                                <color key="titleColor" red="0.4938532887" green="0.7381880905" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </state>
                                             <connections>
                                                 <action selector="didTapRetweet:" destination="rXi-xg-Sjr" eventType="touchUpInside" id="TJd-w4-8UC"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="timelineFavoriteBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oru-e5-qb7">
+                                            <rect key="frame" x="183" y="83" width="74" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <state key="normal" title="0" image="favor-icon">
+                                                <color key="titleColor" red="0.49385328865003808" green="0.73818809051991563" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="didTapFavorite:" destination="rXi-xg-Sjr" eventType="touchUpInside" id="hLW-Ar-VRB"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -156,7 +161,11 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Home Timeline" id="MOc-fV-EZE">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="mrt-g3-vDo"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="mrt-g3-vDo">
+                            <connections>
+                                <action selector="didTapLogout:" destination="Lbl-k5-U4i" id="8s7-aQ-Jjj"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="edit-icon" id="4NG-GE-LAG">
                             <connections>
                                 <segue destination="frj-cD-ODy" kind="presentation" id="txa-wp-YFF"/>
@@ -164,6 +173,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="logoutBtn" destination="mrt-g3-vDo" id="JAE-4h-hfj"/>
                         <outlet property="tableView" destination="Bi1-Ne-u27" id="W45-BE-RNG"/>
                     </connections>
                 </viewController>
