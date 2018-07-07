@@ -1,8 +1,8 @@
-# Project 4 - *Name of App Here*
+# Project 2 - Twitter
 
 **Name of your app** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **X** hours spent in total
+Time spent: 14 hours
 
 ## User Stories
 
@@ -54,7 +54,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src= 'https://i.imgur.com/C21UdYJ.gif' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
